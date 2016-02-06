@@ -1,0 +1,32 @@
+Package: EGAD
+Type: Package
+Title: Extending guilt-by-association by degree
+Version: 0.99.0
+Date: 2015-11-18
+Authors@R: as.person( c( 
+              "Melanie Weber <mweber@cshl.edu> [aut, cre]",  
+              "Sara Ballouz  <sballouz@cshl.edu> [aut, cre]",
+              "Paul Pavlidis <paul@chibi.ubc.ca> [aut]",
+              "Jesse Gillis <jgillis@cshl.edu [aut]") )
+Maintainer: <sballouz@cshl.edu>
+Description: More about what it does (maybe more than one line)
+License: GPL-2
+Imports:
+    gplots,
+    Biobase,
+    GEOquery,
+    limma,
+    arrayQualityMetrics,
+    impute,
+    RColorBrewer,
+    zoo,
+    igraph,
+    plyr,
+    Matrix,
+    MASS,
+    RCurl
+Suggests:
+    knitr,
+    testthat
+VignetteBuilder: knitr
+RoxygenNote: 5.0.1
