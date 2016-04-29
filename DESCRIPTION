@@ -1,0 +1,29 @@
+Package: EGAD
+Type: Package
+Title: Extending guilt by association by degree
+Version: 0.99.0
+Date: 2016-04-20
+Authors@R: c(person("Sara Ballouz", "Developer", role = c("aut",
+        "cre"), email = "sballouz@cshl.edu"), person("Melanie Weber",
+        "Developer", role = c("aut","ctb"), email =
+        "melweber@t-online.de"), person("Paul Pavlidis", "Author", role
+        = "aut", email = "paul@chibi.ubc.ca"), person("Jesse Gillis",
+        "Author", role = c("aut","ctb"), email = "jgillis@cshl.edu"))
+Description: The package implements a series of highly efficient tools
+        to calculate functional properties of networks based on guilt
+        by association methods.
+License: GPL-2
+Depends: R(>= 3.1)
+Imports: gplots, Biobase, GEOquery, limma, arrayQualityMetrics, impute,
+        RColorBrewer, zoo, igraph, plyr, Matrix, MASS, RCurl
+Suggests: knitr, rmarkdown, testthat
+VignetteBuilder: knitr
+RoxygenNote: 5.0.1
+LazyData: true
+biocViews: Software, FunctionalGenomics, SystemsBiology,
+        GenePrediction, FunctionalPrediction, NetworkEnrichment,
+        GraphAndNetwork, Network
+Author: Sara Ballouz Developer [aut, cre], Melanie Weber Developer
+        [aut, ctb], Paul Pavlidis Author [aut], Jesse Gillis Author
+        [aut, ctb]
+Maintainer: Sara Ballouz Developer <sballouz@cshl.edu>
