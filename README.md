@@ -16,7 +16,7 @@ biocLite("EGAD")
 ```
 ### Github 
 ```{r}
-devtools::install_github("sarbal/EGAD", build_vignettes = TRUE)
+devtools::install_github("sarbal/EGAD/EGAD", build_vignettes = TRUE)
 ```
 
 ## Quick start 
