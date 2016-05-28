@@ -10,7 +10,11 @@
 #' @param output string, default is AUROC  
 #' @param FLAG_DRAW binary flag to draw roc plot
 #'
-#' @return scores numeric matrix  
+#' @return scores numeric matrix with a row for each gene label and columns
+#'         auc: the average area under the ROC or PR curve for the neighbor voting predictor
+#'              across cross validation replicates
+#'         avg_node_degree: the average node degree
+#'         degree_null_auc: the area the ROC or PR curve for the node degree predictor
 #' 
 #' @keywords neighbor voting 
 #' guilt by association 
@@ -149,7 +153,10 @@ neighbor_voting <- function(genes.labels, network, nFold = 3, output = "AUROC", 
             plot_roc_overlay(predicts, test.genes.labels)
         }
         
-        scores <- cbind(rocN, matrix(average_node_degree)[, 1], roc)
+        scores <- cbind(
+            auc=rocN,
+            avg_node_degree=matrix(average_node_degree)[, 1],
+            degree_null_auc=roc)
     } else if (output == "PR") {
         
         
@@ -188,7 +195,10 @@ neighbor_voting <- function(genes.labels, network, nFold = 3, output = "AUROC", 
         # print('Calculate node degree - average')
         average_node_degree <- t(temp)/colsums
         
-        scores <- cbind(auprc, matrix(average_node_degree)[, 1], auprc.null)
+        scores <- cbind(
+            auc=auprc,
+            avg_node_degree=matrix(average_node_degree)[, 1],
+            degree_null_auc=auprc.null)
     }
     
     return(scores)
