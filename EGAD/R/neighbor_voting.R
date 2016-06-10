@@ -161,11 +161,14 @@ neighbor_voting <- function(genes.labels, network, nFold = 3, output = "AUROC", 
         
     	nans <- which(test.genes.labels == 1, arr.ind = TRUE)
         predicts[nans] <- NA
-        
+        filter <- matrix(genes.labels, nrow = g, ncol = nFold * l)
+        negatives <- which(filter == 0, arr.ind = TRUE)
+        positives <- which(filter == 1, arr.ind = TRUE)
+
         # print('Rank test data')
         predicts <- apply(-abs(predicts), 2, rank, na.last = "keep", ties.method = "average")
         predicts[negatives] <- 0
-        
+
         avgprc.s <- lapply(1:(nFold * l), function(i)  
                   mean(  ( 1:length(which( sort(predicts[,i]) > 0   )  )
                         / sort(predicts[,i])[ which( sort(predicts[,i]) > 0 )]), na.rm = TRUE)   )
@@ -174,7 +177,7 @@ neighbor_voting <- function(genes.labels, network, nFold = 3, output = "AUROC", 
         avgprc.null <- lapply(1:(nFold * l), function(i) n.s[i]/g)
         avgprc.null <- rowMeans(matrix(unlist(avgprc.null), ncol = nFold, nrow = l, byrow = FALSE), 
                na.rm = TRUE)
-        
+
         avgprc <- rowMeans(matrix(unlist(avgprc.s), ncol = nFold, nrow = l, byrow = FALSE), na.rm = TRUE)
         names(avgprc) <- colnames(genes.labels)
         
@@ -193,8 +196,9 @@ neighbor_voting <- function(genes.labels, network, nFold = 3, output = "AUROC", 
         scores <- cbind(
             avgprc=avgprc,
             avg_node_degree=matrix(average_node_degree)[, 1],
-            degree_null_auc=auprc.null)
+            degree_null_auc=avgprc.null)
     }
-    
+
+
     return(scores)
-} 
+}
