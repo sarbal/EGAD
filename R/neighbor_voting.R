@@ -10,7 +10,11 @@
 #' @param output string, default is AUROC  
 #' @param FLAG_DRAW binary flag to draw roc plot
 #'
-#' @return scores numeric matrix  
+#' @return scores numeric matrix with a row for each gene label and columns
+#'         auc: the average area under the ROC or PR curve for the neighbor voting predictor
+#'              across cross validation replicates
+#'         avg_node_degree: the average node degree
+#'         degree_null_auc: the area the ROC or PR curve for the node degree predictor
 #' 
 #' @keywords neighbor voting 
 #' guilt by association 
@@ -27,7 +31,7 @@
 #' 
 #' aurocs <- neighbor_voting(genes.labels, net, output = 'AUROC') 
 #' 
-#' auprcs <- neighbor_voting(genes.labels, net, output = 'PR') 
+#' avgprcs <- neighbor_voting(genes.labels, net, output = 'PR') 
 #' 
 #' @export
 #'
@@ -149,32 +153,33 @@ neighbor_voting <- function(genes.labels, network, nFold = 3, output = "AUROC", 
             plot_roc_overlay(predicts, test.genes.labels)
         }
         
-        scores <- cbind(rocN, matrix(average_node_degree)[, 1], roc)
+        scores <- cbind(
+            auc=rocN,
+            avg_node_degree=matrix(average_node_degree)[, 1],
+            degree_null_auc=roc)
     } else if (output == "PR") {
         
-        
-        # print('Rank test data')
-        predicts <- apply(abs(predicts), 2, rank, na.last = "keep", ties.method = "average")
-        
+    	nans <- which(test.genes.labels == 1, arr.ind = TRUE)
+        predicts[nans] <- NA
         filter <- matrix(genes.labels, nrow = g, ncol = nFold * l)
         negatives <- which(filter == 0, arr.ind = TRUE)
         positives <- which(filter == 1, arr.ind = TRUE)
-        
+
+        # print('Rank test data')
+        predicts <- apply(-abs(predicts), 2, rank, na.last = "keep", ties.method = "average")
+        predicts[negatives] <- 0
+
+        avgprc.s <- lapply(1:(nFold * l), function(i)  
+                  mean(  ( 1:length(which( sort(predicts[,i]) > 0   )  )
+                        / sort(predicts[,i])[ which( sort(predicts[,i]) > 0 )]), na.rm = TRUE)   )
+ 
         n.s <- colSums(test.genes.labels)
-        o.s <- sapply(1:(nFold * l), function(i) order(predicts[, i], decreasing = TRUE))
-        
-        fp.s <- lapply(1:(nFold * l), function(i) cumsum(!test.genes.labels[o.s[, i], i]))
-        tp.s <- lapply(1:(nFold * l), function(i) cumsum(test.genes.labels[o.s[, i], i]))
-        fn.s <- lapply(1:(nFold * l), function(i) n.s[i] - tp.s[[i]])
-        
-        precis.s <- lapply(1:(nFold * l), function(i) tp.s[[i]]/(tp.s[[i]] + fp.s[[i]]))
-        recall.s <- lapply(1:(nFold * l), function(i) tp.s[[i]]/n.s[i])
-        auprc.s <- lapply(1:(nFold * l), function(i) get_auc(recall.s[[i]], precis.s[[i]]))
-        auprc.null <- lapply(1:(nFold * l), function(i) n.s[i]/g)
-        auprc.null <- rowMeans(matrix(unlist(auprc.null), ncol = nFold, nrow = l, byrow = FALSE), 
-            na.rm = TRUE)
-        auprc <- rowMeans(matrix(unlist(auprc.s), ncol = nFold, nrow = l, byrow = FALSE), na.rm = TRUE)
-        names(auprc) <- colnames(genes.labels)
+        avgprc.null <- lapply(1:(nFold * l), function(i) n.s[i]/g)
+        avgprc.null <- rowMeans(matrix(unlist(avgprc.null), ncol = nFold, nrow = l, byrow = FALSE), 
+               na.rm = TRUE)
+
+        avgprc <- rowMeans(matrix(unlist(avgprc.s), ncol = nFold, nrow = l, byrow = FALSE), na.rm = TRUE)
+        names(avgprc) <- colnames(genes.labels)
         
         # print('Calculate node degree')
         node_degree <- rowSums(network)
@@ -188,8 +193,12 @@ neighbor_voting <- function(genes.labels, network, nFold = 3, output = "AUROC", 
         # print('Calculate node degree - average')
         average_node_degree <- t(temp)/colsums
         
-        scores <- cbind(auprc, matrix(average_node_degree)[, 1], auprc.null)
+        scores <- cbind(
+            avgprc=avgprc,
+            avg_node_degree=matrix(average_node_degree)[, 1],
+            degree_null_auc=avgprc.null)
     }
-    
+
+
     return(scores)
-} 
+}

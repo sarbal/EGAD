@@ -3,7 +3,7 @@
 #' The function calculates the area under the receiver operating characteristic (ROC)
 #' curve analytically  
 #' 
-#' @param scores numeric array
+#' @param ranks numeric array
 #' @param labels binary array
 #'
 #' @return auroc Numeric value 
