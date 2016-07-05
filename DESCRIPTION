@@ -1,14 +1,14 @@
 Package: EGAD
 Type: Package
 Title: Extending guilt by association by degree
-Version: 1.1.2
+Version: 1.1.3
 Date: 2016-04-20
-Authors@R: c(person("Sara Ballouz", "Developer", role = c("aut",
+Authors@R: c(person("Sara Ballouz",  role = c("aut",
         "cre"), email = "sballouz@cshl.edu"), person("Melanie Weber",
-        "Developer", role = c("aut","ctb"), email =
-        "melweber@t-online.de"), person("Paul Pavlidis", "Author", role
+         role = c("aut","ctb"), email =
+        "melweber@t-online.de"), person("Paul Pavlidis", role
         = "aut", email = "paul@chibi.ubc.ca"), person("Jesse Gillis",
-        "Author", role = c("aut","ctb"), email = "jgillis@cshl.edu"))
+         role = c("aut","ctb"), email = "jgillis@cshl.edu"))
 Description: The package implements a series of highly efficient tools
         to calculate functional properties of networks based on guilt
         by association methods.
@@ -23,7 +23,7 @@ LazyData: true
 biocViews: Software, FunctionalGenomics, SystemsBiology,
         GenePrediction, FunctionalPrediction, NetworkEnrichment,
         GraphAndNetwork, Network
-Author: Sara Ballouz Developer [aut, cre], Melanie Weber Developer
-        [aut, ctb], Paul Pavlidis Author [aut], Jesse Gillis Author
+Author: Sara Ballouz [aut, cre], Melanie Weber 
+        [aut, ctb], Paul Pavlidis [aut], Jesse Gillis 
         [aut, ctb]
-Maintainer: Sara Ballouz Developer <sballouz@cshl.edu>
+Maintainer: Sara Ballouz <sballouz@cshl.edu>

@@ -8,10 +8,10 @@
 #'
 #' @format A data frame with 2086086 rows and 4 variables:
 #' \describe{
-#'   \item{name}{chromosome}
-#'   \item{entrezID}{chromosomal start position, in base pairs}
-#'   \item{GO}{chromosomal end position, in base pairs}
-#'   \item{evidence}{chromosomal strand, + or - }
+#'  \item{name}{gene symbol}
+#'  \item{entrezID}{entrez identifier}
+#'  \item{GO}{gene ontology term ID}
+#'  \item{evidence}{evidence code}
 #'  
 #' }
 #'  @source \url{http://geneontology.org/}
