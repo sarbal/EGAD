@@ -7,16 +7,24 @@ With the EGAD (Extending ‘Guilt-by-Association’ by Degree) package, we prese
 The functions implemented here can be applied to gene networks constructed from a range of data types (e.g., protein-protein interactions, expression, etc) across a subset of species with available functional annotations (e.g., human, mouse, zebrafish, worm, fly and yeast). 
 
 ## Installation
+
 ### Bioconductor 
 The EGAD package has been accepted at [Bioconductor](http://bioconductor.org/). If you have bionconductor installed ('https://www.bioconductor.org/install/'), use the following command below. That will install the appropriate EGAD version. 
 ```
 ## try http:// if https:// URLs are not supported
 source("https://bioconductor.org/biocLite.R")
 biocLite("EGAD")
-```
+``` 
+
 ### Github 
 ```{r}
 devtools::install_github("sarbal/EGAD/EGAD", build_vignettes = TRUE)
+```
+
+### EGAD lite 
+The core functions of EGAD can be found in the EGADlite binary file. You can simply download and load this file into your R session. There are no package dependencies, except for needing igraph if you wish to use the extend_network function.    
+```{r}
+load("EGADlite.Rdata")
 ```
 
 ## Quick start 
