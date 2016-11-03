@@ -28,8 +28,37 @@ load("EGADlite.RData")
 ```
 
 ## Quick start 
-Follow the tutorial in the linked pdf. 
+Here is a quick example on how to run the neighbor_voting algorithm on a binary network. 
+```{r}
+# Load EGAD and the data files 
+library(EGAD)
+data(biogrid)
+data(GO.human)
+
+# Or you can load EGADlite here too:
+# load("EGADlite.RData")
+# download the data folder into your directory and run
+# load("data/biogrid.RData")
+# load("data/GO.human.RData")
+
+# Make your gene list and the network 
+genelist <- make_genelist(biogrid)
+gene_network <- make_gene_network(biogrid,genelist)
+
+# Store your annotation matrix
+goterms <- unique(GO.human[,3])
+annotations <- make_annotations(GO.human[,c(2,3)],genelist,goterms)
+
+# Run GBA 
+GO_groups_voted <- run_GBA(gene_network, annotations)
+
+# neighbor voting AUROCs
+auc_GO_nv = GO_groups_voted[[1]][,1]
+
+# node degree AUCs
+auc_GO_nd = GO_groups_voted[[1]][,3]
+```
 
 ## Note 
-This tool is memory intensive! 
+This tool is *very* memory intensive! We recommend you increase your memory to the max (memory.limit(XXXX) ) . 
 
