@@ -24,7 +24,7 @@ devtools::install_github("sarbal/EGAD/EGAD", build_vignettes = TRUE)
 ### EGAD lite 
 The core functions of EGAD can be found in the EGADlite binary file. You can simply download and load this file into your R session. There are no package dependencies, except for needing igraph if you wish to use the extend_network function.    
 ```{r}
-load("EGADlite.Rdata")
+load("EGADlite.RData")
 ```
 
 ## Quick start 
