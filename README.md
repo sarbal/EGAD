@@ -9,7 +9,7 @@ The functions implemented here can be applied to gene networks constructed from 
 ## Installation
 
 ### Bioconductor 
-The EGAD package has been accepted at [Bioconductor](http://bioconductor.org/). If you have bionconductor installed ('https://www.bioconductor.org/install/'), use the following command below. That will install the appropriate EGAD version. 
+The EGAD package has been accepted at [Bioconductor](http://bioconductor.org/). If you have bionconductor installed ('https://www.bioconductor.org/install/'), use the following command below. That will install the appropriate EGAD version. Make sure you have the latest verisons of R and biocLite when trying to install. We've noted some issues with the installation through bioconductor. 
 ```
 ## try http:// if https:// URLs are not supported
 source("https://bioconductor.org/biocLite.R")
@@ -60,5 +60,5 @@ auc_GO_nd = GO_groups_voted[[1]][,3]
 ```
 
 ## Note 
-This tool is *very* memory intensive! We recommend you increase your memory to the max (memory.limit(XXXX) ) . 
+This tool is *very* memory intensive! We recommend you increase your memory to the max (memory.limit(XXXX) ). 
 
