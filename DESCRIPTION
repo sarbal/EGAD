@@ -1,7 +1,11 @@
 Package: EGAD
 Type: Package
 Title: Extending guilt by association by degree
+<<<<<<< HEAD
 Version: 1.4.0
+=======
+Version: 1.5.2
+>>>>>>> d7d574d... bug fix: GEMMA url
 Date: 2016-04-20
 Authors@R: c(person("Sara Ballouz",  role = c("aut",
         "cre"), email = "sballouz@cshl.edu"), person("Melanie Weber",
