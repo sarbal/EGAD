@@ -22,7 +22,7 @@
 get_expression_data_gemma <- function(gseid, filtered = "true") {
     # Get the text file from gemma (via url)
     
-    url <- sprintf('http://chibi.ubc.ca/Gemma/rest/datasets/%s/data?filter=%s', gseid. filtered)
+    url <- sprintf('http://chibi.ubc.ca/Gemma/rest/datasets/%s/data?filter=%s', gseid, filtered)
     
     data.matrix <- read.table(url, sep = "\t", header = TRUE, quote = "")
     genes <- data.matrix[, 1]
