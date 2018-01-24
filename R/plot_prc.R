@@ -23,12 +23,12 @@
 #'
 #' @export
 #' 
-plot_prc <- function(scores, labels) {
+plot_prc <- function(scores, labels, ...) {
     prc <- get_prc(scores, labels)
     recall <- prc[,1]
     precision <- prc[, 2]
     prc.null <- sum(labels)/length(labels)
-    plot(recall, precision, type = "l", xlab = "Recall", ylab = "Precision", bty = "n")
-    abline( h = prc.null, col = 2, lty=2)
+    plot(recall, precision, type = "l", xlab = "Recall", ylab = "Precision", bty = "n", ...)
+    abline( h = prc.null, col = 2, lty=2, ...)
     return(prc)
 } 
