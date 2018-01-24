@@ -27,10 +27,10 @@
 #' @export
 #'
 plot_distribution <- function(auc, b = 20, col = "lightgrey", xlab = "", ylab = "Density", xlim = c(0.4, 
-    1), ylim = c(0, 5), med = TRUE, avg = TRUE, density = TRUE, bars = FALSE) {
+    1), ylim = c(0, 5), med = TRUE, avg = TRUE, density = TRUE, bars = FALSE, ...) {
     
-    auc_hist <- hist(auc, plot = FALSE, breaks = b)
-    bp <- boxplot(auc, plot = FALSE)
+    auc_hist <- hist(auc, plot = FALSE, breaks = b, ...)
+    bp <- boxplot(auc, plot = FALSE, ...)
 
     
     if (bars == TRUE) {
@@ -38,7 +38,7 @@ plot_distribution <- function(auc, b = 20, col = "lightgrey", xlab = "", ylab = 
       ylim <- c(0,ymax)
       xlim <- range(auc_hist$breaks)
         plot(auc_hist, xlab = xlab,  xlim = xlim, col = col, bty = "n", cex.lab = 1.5, 
-            cex.axis = 1.2, main = "")
+            cex.axis = 1.2, main = "", ...)
         
     } else {
         if (density == TRUE) {
@@ -55,16 +55,16 @@ plot_distribution <- function(auc, b = 20, col = "lightgrey", xlab = "", ylab = 
             
         }
         plot(h, type = "l", xlab = xlab, ylab = ylab, xlim = xlim, ylim = ylim, col = 0, bty = "n", 
-            cex.lab = 1.5, cex.axis = 1.2)
-        polygon(h, col = col, border = 0)
-        lines(h, lwd = 2)
+            cex.lab = 1.5, cex.axis = 1.2, ...)
+        polygon(h, col = col, border = 0, ...)
+        lines(h, lwd = 2, ...)
     }
     if (med == TRUE) {
-        abline(v = bp$stats[c(2, 4)], lty = 3, col = "darkgrey", lwd = 3)
-        abline(v = bp$stats[3], lty = 3, col = 2, lwd = 3)
+        abline(v = bp$stats[c(2, 4)], lty = 3, col = "darkgrey", lwd = 3, ...)
+        abline(v = bp$stats[3], lty = 3, col = 2, lwd = 3, ...)
     }
     if (avg == TRUE) {
-        abline(v = mean(auc), lty = 2, col = 2)
+        abline(v = mean(auc), lty = 2, col = 2, ...)
     }
     
     return(list(auc_hist, bp))
