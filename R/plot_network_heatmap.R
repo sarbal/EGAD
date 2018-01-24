@@ -17,13 +17,13 @@
 #' @export
 #' @import gplots
 #'
-plot_network_heatmap <- function(net, colrs) {
+plot_network_heatmap <- function(net, colrs, ...) {
     
     if (missing(colrs)) {
         colrs = colorpanel(100, "red", "blue")
     }
     nd = node_degree(net)
     o = order(nd)
-    image(net[o, o], axes = FALSE, bty = "n", col = colrs)
+    image(net[o, o], axes = FALSE, bty = "n", col = colrs, ...)
     
 } 
