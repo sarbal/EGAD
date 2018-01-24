@@ -28,7 +28,7 @@
 #' @import plyr
 #' @import gplots
 #' 
-plot_roc_overlay <- function(scores.mat, labels.mat, nbins = 100) {
+plot_roc_overlay <- function(scores.mat, labels.mat, nbins = 100, ...) {
     n <- dim(labels.mat)[1]  # number of genes
     nn <- dim(labels.mat)[2]  # number of functions
     
@@ -52,10 +52,10 @@ plot_roc_overlay <- function(scores.mat, labels.mat, nbins = 100) {
     
     Z <- log10(z)
     Z[!is.finite(Z)] <- 0
-    image(Z, col = colorpanel(nbins, "white", "black"), xlab = "FPR", ylab = "TPR", bty = "n", axes = FALSE)
+    image(Z, col = colorpanel(nbins, "white", "black"), xlab = "FPR", ylab = "TPR", bty = "n", axes = FALSE, ...)
     axis(1)
     axis(2)
     
-    lines(roc_sum, lty = 2, col = 1)
+    lines(roc_sum, lty = 2, col = 1, ...)
     return(list(Z, roc_sum, aurocs, rocs))
 } 
