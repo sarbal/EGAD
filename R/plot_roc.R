@@ -24,10 +24,10 @@
 #'
 #' @export
 #' 
-plot_roc <- function(scores, labels) {
+plot_roc <- function(scores, labels, ...) {
     roc <- get_roc(scores, labels)
     fpr <- roc[, 1]
     tpr <- roc[, 2]
-    plot(fpr, tpr, type = "l", xlab = "FPR", ylab = "TPR", bty = "n")
+    plot(fpr, tpr, type = "l", xlab = "FPR", ylab = "TPR", bty = "n", ...)
     return(roc)
 } 
