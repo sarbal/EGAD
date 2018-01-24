@@ -50,5 +50,5 @@ plot_density_compare <- function(aucA, aucB, col = "lightgrey", xlab = "AUROC (n
     lines(aucA_dens, lwd = 3, col = 1, ...)
     lines(aucB_dens, lwd = 3, col = 2, ...)
     
-    return(list(a, b))
+    #return(list(a, b))
 } 
