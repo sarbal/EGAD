@@ -23,7 +23,7 @@
 #'   
 
 extend_network <- function(net, max = 6) {
-    g <- graph.adjacency(net, mode = "undirected")
+    g <- graph.adjacency(net, mode = "undirected", weighted=TRUE)
     s <- shortest.paths(g)
     s[s > max] <- NA
     s[!is.finite(s)] <- NA
