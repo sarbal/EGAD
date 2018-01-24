@@ -40,15 +40,15 @@ plot_density_compare <- function(aucA, aucB, col = "lightgrey", xlab = "AUROC (n
         b <- mean(aucB)
     }
     
-    box <- cbind(c(a, a, b, b), c(0, 1, 1, 0))
+    box <- cbind(c(a, a, b, b), c(0, 1, 1, 0), ...)
     
     plot(0, 0, col = 0, xlim = xlim, ylim = ylim, xlab = xlab, ylab = ylab, bty = "n", cex.lab = 1.5, 
         cex.axis = 1.2, ...)
     polygon(box, col = "gray84", border = 0, ...)
-    lines(box[1:2, ], lty = 3, lwd = 3, col = 1)
-    lines(box[3:4, ], lty = 3, lwd = 3, col = 2)
-    lines(aucA_dens, lwd = 3, col = 1)
-    lines(aucB_dens, lwd = 3, col = 2)
+    lines(box[1:2, ], lty = 3, lwd = 3, col = 1, ...)
+    lines(box[3:4, ], lty = 3, lwd = 3, col = 2, ...)
+    lines(aucA_dens, lwd = 3, col = 1, ...)
+    lines(aucB_dens, lwd = 3, col = 2, ...)
     
     return(list(a, b))
 } 
