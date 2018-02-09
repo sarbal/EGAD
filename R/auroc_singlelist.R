@@ -18,12 +18,12 @@
 #' labels <- c(rep(0,10))
 #' labels[c(1,3,5)] <- 1 
 #' scores <- 10:1
-#' auroc <- auroc_analytic(scores, labels)
+#' auroc <- auc_singlelist(scores, labels)
 #'
 #' @export
 #'
 
-auroc_analytic <- function(scores, labels) {
+auc_singlelist <- function(scores, labels) {
     
     negatives <- which(labels == 0, arr.ind = TRUE)
     scores[negatives] <- 0
