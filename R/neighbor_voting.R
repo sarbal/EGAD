@@ -37,32 +37,42 @@
 #'
 #'  
 neighbor_voting <- function(genes.labels, network, nFold = 3, output = "AUROC", FLAG_DRAW = FALSE) {
-    
-    genes.labels <- as.matrix(genes.labels)
-    
+
+    genes.labels <- as.matrix(genes.labels);
     # Filter for common genes between network and labels
-    ord <- order(rownames(network))
-    network <- network[ord, ord]
-    
-    ord <- order(rownames(genes.labels))
-    genes.labels <- as.matrix(genes.labels[ord, ])
-    
-    match.lab <- match(rownames(genes.labels), rownames(network))
-    filt.lab <- !is.na(match.lab)
-    filt.net <- match.lab[filt.lab]
-    network <- network[filt.net, filt.net]
-    genes.labels <- as.matrix(genes.labels[filt.lab, ])
-    
+    #ord <- order(rownames(network));
+    #network <- network[ord, ord];
+    #ord <- order(rownames(genes.labels));
+    #genes.labels <- as.matrix(genes.labels[ord, ]);
+
+
+    maskNet <- rownames(network) %in% rownames(genes.labels)
+    network <- network[maskNet,maskNet]
+
+    maskLab <- match(rownames(network),rownames(genes.labels))
+    genes.labels <- as.matrix(genes.labels[maskLab, ]);
+    #match.lab <- match(rownames(genes.labels), rownames(network));
+    #filt.lab <- !is.na(match.lab);
+    #filt.net <- match.lab[filt.lab];
+
+    #network <- network[filt.net, filt.net]
+
+    #genes.labels <- as.matrix(genes.labels[filt.lab, ]);
     # genes.label : needs to be in 1s and 0s
-    l <- dim(genes.labels)[2]
-    g <- dim(genes.labels)[1]
-    ab <- which(genes.labels != 0, arr.ind = TRUE)
-    n <- length(ab[, 1])
-    
+    l <- dim(genes.labels)[2];
+    g <- dim(genes.labels)[1];
+    ab <- which(genes.labels != 0, arr.ind = TRUE);
+    n <- length(ab[, 1]);
     
     # print('Make genes label CV matrix')
-    test.genes.labels <- matrix(genes.labels, nrow = g, ncol = nFold * l)
+    if (!require('Matrix', quietly=TRUE)) {
+        install.packages('Matrix')
+        library(Matrix)
+    }
     
+    test.genes.labels <- matrix(genes.labels, nrow = g, ncol = nFold * l)
+    test.genes.labels <- as(test.genes.labels,'sparseMatrix')
+
     # For each fold in each GO group, remove 1/nth of the values of the genes.label
     for (j in 1:l) {
         d <- which(ab[, 2] == j)  # Which indices the genes are in this particular GO group
@@ -76,14 +86,14 @@ neighbor_voting <- function(genes.labels, network, nFold = 3, output = "AUROC", 
             test.genes.labels[ab[d], c][e] <- 0
         }
     }
-    
+
     # print('Get sums - mat. mul.') sumin = ( t(network) %*% test.genes.labels) sumin <- ((network)
     # %*% test.genes.labels)
     sumin <- crossprod(network, test.genes.labels)
-    
+
     # print('Get sums - calc sumall')
-    sumall <- matrix(apply(network, 2, sum), ncol = dim(sumin)[2], nrow = dim(sumin)[1])
-    
+    sumall <- matrix(colSums(network), ncol = dim(sumin)[2], nrow = dim(sumin)[1])
+
     # print('Get sums - calc predicts')
     predicts <- sumin/sumall
     
@@ -91,61 +101,80 @@ neighbor_voting <- function(genes.labels, network, nFold = 3, output = "AUROC", 
     if (output == "AUROC") {
         # print('Hide training data')
         nans <- which(test.genes.labels == 1, arr.ind = TRUE)
-        
+
         predicts[nans] <- NA
-        
-        # print('Rank test data')
-        predicts <- apply(abs(predicts), 2, rank, na.last = "keep", ties.method = "average")
-        
+
+        if (!require('foreach', quietly=TRUE)) {
+           install.packages('foreach')
+           library(foreach)
+           library(iterators)
+        }
+        library(iterators)
+        predicts <- as.matrix(predicts)
+        #print('Rank test data')
+        predicts <- foreach(predicts=iter(predicts,by='col'),.combine=cbind) %dopar% (rank(abs(predicts),na.last = "keep", ties.method = "average"))
+
+        # if (!require('parallel', quietly=TRUE)) {
+        # install.packages('parallel')
+        # library(parallel)
+        # }
+        # predicts <- as.matrix(predicts)
+        # clust <- makeCluster(detectCores())
+        # predicts <- parSapply(clust, predicts <- iter(predicts,by='col'), function(x) rank(abs(x),na.last = "keep", ties.method = "average"))
+        # stopCluster(clust)
+
         filter <- matrix(genes.labels, nrow = g, ncol = nFold * l)
         negatives <- which(filter == 0, arr.ind = TRUE)
         positives <- which(filter == 1, arr.ind = TRUE)
-        
+
         predicts[negatives] <- 0
-        
+        temp1 <- colSums(test.genes.labels)
+        temp2 <- colSums(filter)
+
         # print('Calculate ROC - np')
-        np <- colSums(filter) - colSums(test.genes.labels)  # Postives
-        
+        #np <- colSums(filter) - colSums(test.genes.labels)  # Postives
+        np <- temp2-temp1
+
         # print('Calculate ROC - nn')
-        nn <- dim(test.genes.labels)[1] - colSums(filter)  # Negatives
-        
+        #nn <- dim(test.genes.labels)[1] - colSums(filter)  # Negatives
+        nn <- dim(test.genes.labels)[1] - temp2
+
         # print('Calculate ROC - p')
         p <- apply(predicts, 2, sum, na.rm = TRUE)
-        
+
         # print('Calculate ROC - rocN')
         rocN <- (p/np - (np + 1)/2)/nn
         rocN <- matrix(rocN, ncol = nFold, nrow = l)
         rocN <- rowMeans(rocN)
-        
+
         # print('Calculate node degree')
         node_degree <- rowSums(network)
         colsums <- colSums(genes.labels)
-        
+
         # print('Calculate node degree - sum across gene labels')
         node_degree <- matrix(node_degree)
         temp <- t(node_degree) %*% genes.labels
-        
-        
+
         # print('Calculate node degree - average')
         average_node_degree <- t(temp)/colsums
-        
+
         # print('Calculate node degree roc - rank node degree')
         ranks <- apply(abs(node_degree), 2, rank, na.last = "keep", ties.method = "average")
         ranks <- matrix(ranks, nrow = length(ranks), ncol = dim(genes.labels)[2])
-        
+
         # print('Calculate node degree roc - remove negatives')
         negatives <- which(genes.labels == 0, arr.ind = TRUE)
         ranks[negatives] <- 0
-        
+
         # print('Calculate node degree roc - np')
         np <- colSums(genes.labels)
-        
+
         # print('Calculate node degree roc - nn')
         nn <- dim(genes.labels)[1] - np
-        
+
         # print('Calculate node degree roc - p')
         p <- apply(ranks, 2, sum, na.rm = TRUE)
-        
+
         # print('Calculate node degree roc - roc')
         roc <- (p/np - (np + 1)/2)/nn
         
@@ -166,7 +195,14 @@ neighbor_voting <- function(genes.labels, network, nFold = 3, output = "AUROC", 
         positives <- which(filter == 1, arr.ind = TRUE)
 
         # print('Rank test data')
-        predicts <- apply(-abs(predicts), 2, rank, na.last = "keep", ties.method = "average")
+        if (!require('foreach', quietly=TRUE)) {
+           install.packages('foreach')
+           library(foreach)
+        }
+        library(iterators)
+        predicts <- as.matrix(predicts)
+        #print('Rank test data')
+        predicts <- foreach(predicts=iter(predicts,by='col'),.combine=cbind) %dopar% (rank(-abs(predicts),na.last = "keep", ties.method = "average"))
         predicts[negatives] <- 0
 
         avgprc.s <- lapply(1:(nFold * l), function(i)  
