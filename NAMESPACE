@@ -3,7 +3,7 @@
 export(assortativity)
 export(auc_multifunc)
 export(auprc)
-export(auroc_analytic)
+export(auc_siinglelist)
 export(build_binary_network)
 export(build_coexp_GEOID)
 export(build_coexp_expressionSet)
