@@ -18,13 +18,15 @@
 #' annotations <- c(rep(0,10))
 #' annotations[c(1,3,5)] <- 1 
 #' optimallist <- 10:1
-#' aurocs_mf <- auc_multifunc(annotations, optimallist)
+#' aurocs_mf <- auc_multifunc(annotations)
 #' 
 #' @export
 #'
-auc_multifunc <- function(annotations, optimallist) {
+auc_multifunc <- function(annotations) {
     annotations <- as.matrix(annotations)
+    gene.mfs <- calculate_multifunc(annotations)
+    optimallist <- as.matrix(gene.mfs[4])
     n <- dim(annotations)[2]
-    aucs <- sapply(1:n, function(i) auroc_analytic(optimallist, annotations[, i]))
+    aucs <- sapply(1:n, function(i) auc_singlelist(optimallist, genes.labels[, i]))
     return(aucs)
 } 
