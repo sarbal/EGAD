@@ -9,7 +9,7 @@ test_that("", {
 	mf = calculate_multifunc(labels)
         optimallist_genes = as.numeric(mf[,4])
 
-	AUC <- apply(labels,2,auroc_analytic,optimallist_genes)
-	AUC2 <- sapply(1:dim(labels)[2], function(i) auroc_analytic( optimallist_genes,labels[,i]) )
+	AUC <- apply(labels,2,auc_singlelist,optimallist_genes)
+	AUC2 <- sapply(1:dim(labels)[2], function(i) auc_singlelist( optimallist_genes,labels[,i]) )
   })
 
