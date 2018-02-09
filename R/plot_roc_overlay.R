@@ -36,7 +36,7 @@ plot_roc_overlay <- function(scores.mat, labels.mat, nbins = 100, ...) {
     z <- diag(nbins + 1) * 0
     
     rocs <- lapply(1:nn, function(i) get_roc(scores.mat[, i], labels.mat[, i]))
-    aurocs <- sapply(1:nn, function(i) auroc_analytic(scores.mat[, i], labels.mat[, i]))
+    aurocs <- sapply(1:nn, function(i) auc_singlelistc(scores.mat[, i], labels.mat[, i]))
     
     roc_sum_X <- rowMeans(sapply(1:nn, function(i) rocs[[i]][, 1]), na.rm = TRUE)
     roc_sum_Y <- rowMeans(sapply(1:nn, function(i) rocs[[i]][, 2]), na.rm = TRUE)
