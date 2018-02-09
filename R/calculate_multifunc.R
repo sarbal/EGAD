@@ -26,9 +26,7 @@ calculate_multifunc <- function(genes.labels) {
     
     genes.labels <- as.matrix(genes.labels)
     N.in <- colSums(genes.labels, na.rm = TRUE)
-    
-    genes.labels <- as.matrix(genes.labels[, (N.in > 0)])
-    N.in <- colSums(genes.labels, na.rm = TRUE)
+    genes.labels <- genes.labels[, (N.in > 0)]
     N.out <- dim(genes.labels)[1] - N.in
     N.weights <- 1/(N.in * N.out)
     mf.N <- as.matrix(genes.labels %*% N.weights)
