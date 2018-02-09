@@ -188,7 +188,7 @@ An additional assessment of the network that is performed is a node degree analy
 
 
 ### Core function: Multifunctionality assessment
-The second core function, `calculate_multifunc`, evaluates gene function prediction based on frequency of annotations.  As is the case of the node degree AUROC, this is not intended as a true "prediction", but a measure of the degree to which a given bias could explain performance.  It constructs the single list that gives the highest average AUROC across all functions. More colloquially, this function attempts to 'cold read' the data and makes the best guess that would work for every annotation set. If it performs well, it indicates that the prevalence of annotations varies strongly between genes. The more highly annotated, or multifunctional, a gene is, the higher the chances it will be predicted as a good candidate for having any annotation, rendering its prediction correct but uninformative. We call this the multifunctionality bias. To determine how this affects gene predictions, we provide a method to analytically determine the optimal prior for guessing candidate genes across functional groups in a given ontology. In combination with the function auroc_analytic, the generated optimal list can be used to determine multifunctionality scores. A comparison of those values with the neighbor voting performance AUROCs gives an indication of the degree to which generic predictions dominate results. Often, as in the example we give below (**section 4.1**), this will arise due to selection biases, which make certain subsets of genes 'good' general predictions.
+The second core function, `calculate_multifunc`, evaluates gene function prediction based on frequency of annotations.  As is the case of the node degree AUROC, this is not intended as a true "prediction", but a measure of the degree to which a given bias could explain performance.  It constructs the single list that gives the highest average AUROC across all functions. More colloquially, this function attempts to 'cold read' the data and makes the best guess that would work for every annotation set. If it performs well, it indicates that the prevalence of annotations varies strongly between genes. The more highly annotated, or multifunctional, a gene is, the higher the chances it will be predicted as a good candidate for having any annotation, rendering its prediction correct but uninformative. We call this the multifunctionality bias. To determine how this affects gene predictions, we provide a method to analytically determine the optimal prior for guessing candidate genes across functional groups in a given ontology. In combination with the function auc_singlelist, the generated optimal list can be used to determine multifunctionality scores. A comparison of those values with the neighbor voting performance AUROCs gives an indication of the degree to which generic predictions dominate results. Often, as in the example we give below (**section 4.1**), this will arise due to selection biases, which make certain subsets of genes 'good' general predictions.
 
 
 ![Figure 5](./figures/mf_schematic.png)
@@ -405,7 +405,7 @@ print(auroc)
 ```
 Or analytically (see Supplemental Material of [@gillis2011mf]):
 ```{r eval=TRUE} 
-auroc <- auroc_analytic(scores, labels)
+auroc <- auc_singlelist(scores, labels)
 print(auroc)
 ```
 
