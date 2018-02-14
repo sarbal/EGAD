@@ -17,7 +17,6 @@
 #' @examples 
 #' annotations <- c(rep(0,10))
 #' annotations[c(1,3,5)] <- 1 
-#' optimallist <- 10:1
 #' aurocs_mf <- auc_multifunc(annotations)
 #' 
 #' @export
