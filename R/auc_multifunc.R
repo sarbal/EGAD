@@ -6,7 +6,6 @@
 #' 
 #'  
 #' @param annotations binary matrix indicating which list elements are in which functional groups.
-#' @param optimallist Ranked list (multifunctionality analysis, see \code{\link{calculate_multifunc}}).
 #'
 #' @return aucs array of aucs for each group in annotations
 #'
@@ -15,8 +14,9 @@
 #' evalutation  
 #'
 #' @examples 
-#' annotations <- c(rep(0,10))
-#' annotations[c(1,3,5)] <- 1 
+#' annotations <- matrix( sample(c(0,1), 100, replace=TRUE),ncol=10,nrow=10)
+#' rownames(annotations) = paste('gene', 1:10, sep='')
+#' colnames(annotations) = paste('label', 1:10, sep='')
 #' aurocs_mf <- auc_multifunc(annotations)
 #' 
 #' @export
@@ -24,8 +24,9 @@
 auc_multifunc <- function(annotations) {
     annotations <- as.matrix(annotations)
     gene.mfs <- calculate_multifunc(annotations)
-    optimallist <- as.matrix(gene.mfs[4])
+    optimallist <- as.matrix(gene.mfs[,4]) # it is the forth column, not one element
     n <- dim(annotations)[2]
-    aucs <- sapply(1:n, function(i) auc_singlelist(optimallist, genes.labels[, i]))
+    aucs <- sapply(1:n, function(i) auc_singlelist(optimallist, annotations[, i]))
+    names(aucs) <- colnames(annotations)
     return(aucs)
 } 
