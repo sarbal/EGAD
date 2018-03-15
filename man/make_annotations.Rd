@@ -9,9 +9,9 @@ make_annotations(data, listA, listB)
 \arguments{
 \item{data}{2-column matrix, each row a pair indicating a relationship or interaction}
 
-\item{listA}{string array of genes}
+\item{listA}{optional, string array of genes}
 
-\item{listB}{string array of labels/functions}
+\item{listB}{optional, string array of labels/functions}
 }
 \value{
 net matrix binary
@@ -26,7 +26,7 @@ labels.list <- paste('labels', 1:10, sep='')
 data <- matrix(0,nrow=100, ncol=2)
 data[,1] <- sample(gene.list, 100, replace=TRUE)
 data[,2] <- sample(labels.list, 100, replace=TRUE)
-net <- make_annotations(data, gene.list, labels.list)
+net <- make_annotations(data)
   
  
 }
