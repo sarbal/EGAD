@@ -24,7 +24,7 @@
 auc_multifunc <- function(annotations) {
     annotations <- as.matrix(annotations)
     gene.mfs <- calculate_multifunc(annotations)
-    optimallist <- as.matrix(gene.mfs[,4]) # it is the forth column, not one element
+    optimallist <- as.matrix(gene.mfs[,4])
     n <- dim(annotations)[2]
     aucs <- sapply(1:n, function(i) auc_singlelist(optimallist, annotations[, i]))
     names(aucs) <- colnames(annotations)
