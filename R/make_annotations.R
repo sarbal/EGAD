@@ -4,8 +4,8 @@
 #' It creates a binary matrix associating genes (rows) with labels (columns).
 #' 
 #' @param data 2-column matrix, each row a pair indicating a relationship or interaction
-#' @param listA string array of genes 
-#' @param listB string array of labels/functions 
+#' @param listA optional, string array of genes 
+#' @param listB optional, string array of labels/functions 
 #' 
 #' @return net matrix binary 
 #' 
@@ -20,12 +20,15 @@
 #' data <- matrix(0,nrow=100, ncol=2)
 #' data[,1] <- sample(gene.list, 100, replace=TRUE)
 #' data[,2] <- sample(labels.list, 100, replace=TRUE)
-#' net <- make_annotations(data, gene.list, labels.list)
-#'   
+#' net <- make_annotations(data)
 #'  
 #' @export
 #' 
-make_annotations <- function(data, listA, listB) {
+make_annotations <- function(data, listA = NULL, listB = NULL) {
+    if(is.null(listA))
+        listA <- unique(data[,1])
+    if(is.null(listB))
+        listB <- unique(data[,2])
     nr <- length(listA)
     nc <- length(listB)
     
