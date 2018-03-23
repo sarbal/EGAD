@@ -18,7 +18,7 @@ biocLite("EGAD")
 
 ### Github 
 ```{r}
-devtools::install_github("sarbal/EGAD/EGAD", build_vignettes = TRUE)
+devtools::install_github("gillislab/EGAD", build_vignettes = TRUE)
 ```
 
 ### EGAD lite 
