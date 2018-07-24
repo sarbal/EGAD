@@ -21,7 +21,7 @@
 #' 
 #' @export
 #' 
-conv_smoother <- function(X, Y, window, xlab = "", ylab = "", raw = FALSE) {
+conv_smoother <- function(X, Y, window, raw = FALSE, output=FALSE, ...) {
     filt <- is.finite(X) & is.finite(Y) & !is.na(X) & !is.na(Y)
     X <- X[filt]
     Y <- Y[filt]
@@ -44,16 +44,17 @@ conv_smoother <- function(X, Y, window, xlab = "", ylab = "", raw = FALSE) {
     std_Y_c <- var_Y_c^(1/2)
     std_Y_c <- std_Y_c[(1:i) * window - (window - 1)]
     
-    plot(X_c, Y_c, ylim = c(ymin, ymax), xlim = c(xmin, xmax), lwd = 4, type = "l", col = 0, bty = "n", 
-        xlab = xlab, ylab = ylab, cex.lab = 1.5, cex.axis = 1.2)
+    plot(X_c, Y_c, ylim = c(ymin, ymax), xlim = c(xmin, xmax), pch=19, ...)
     
-    polygon(c(X_c, rev(X_c)), c(Y_c - std_Y_c, rev(Y_c + std_Y_c)), col = "lightgrey", border = NA)
+    polygon(c(X_c, rev(X_c)), c(Y_c - std_Y_c, rev(Y_c + std_Y_c)), border = NA, ...)
     
     if (raw == TRUE) {
-        points(X, Y, col = rgb(75, 0, 150, 10, maxColorValue = 255), pch = 19, cex = 0.1)
+        points(X, Y, pch = 19, cex = 0.1)
     }
     
     lines(X_c, Y_c, col = 1, lwd = 2)
     smoothed <- cbind(X_c, Y_c, std_Y_c)
-    return(smoothed)
-} 
+    if(output==TRUE){ 
+        return(smoothed)
+    }
+}
