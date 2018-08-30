@@ -131,8 +131,9 @@ To install this package, start R and enter
 
 ```{r, eval=FALSE}
 ## try http if https is not available
-source("https://bioconductor.org/biocLite.R")
-biocLite("EGAD")
+if (!requireNamespace("BiocManager", quietly=TRUE))
+    install.packages("BiocManager")
+BiocManager::install("EGAD")
 ```
 To view this documentation in R, enter
 ```{r, eval=FALSE}
