@@ -35,7 +35,7 @@ library(EGAD)
 data(biogrid)
 data(GO.human)
 
-# Or you can load EGADlite here too:
+# Or you can load EGADlite here too (https://github.com/sarbal/EGADLite):
 # load("EGADlite.RData")
 # download the data folder into your directory and run
 # load("data/biogrid.RData")
