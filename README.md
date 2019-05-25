@@ -12,13 +12,15 @@ The functions implemented here can be applied to gene networks constructed from 
 The EGAD package has been accepted at [Bioconductor](http://bioconductor.org/). If you have bionconductor installed ('https://www.bioconductor.org/install/'), use the following command below. That will install the appropriate EGAD version. Make sure you have the latest verisons of R and biocLite when trying to install. We've noted some issues with the installation through bioconductor. 
 ```
 ## try http:// if https:// URLs are not supported
-source("https://bioconductor.org/biocLite.R")
-biocLite("EGAD")
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install("EGAD")
 ``` 
 
 ### Github 
 ```{r}
-devtools::install_github("sarbal/EGAD/EGAD", build_vignettes = TRUE)
+devtools::install_github("sarbal/EGAD/", build_vignettes = TRUE)
 ```
 
 ### EGAD lite 
