@@ -21,7 +21,7 @@
 #' scores <- 10:1
 #' roc <- plot_roc(scores, labels)
 #'
-#'
+#' @import graphics
 #' @export
 #' 
 plot_roc <- function(scores, labels) {

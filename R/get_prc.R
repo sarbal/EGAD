@@ -2,7 +2,7 @@
 #'
 #' The function calculates the recall and precision 
 #' 
-#' @param scores numeric array
+#' @param ranks numeric array
 #' @param labels binary array
 #'
 #' @return recall,precision numeric arrays  
@@ -15,18 +15,19 @@
 #' labels <- c(rep(0,10))
 #' labels[c(1,3,5)] <- 1 
 #' scores <- 10:1
-#' prc <- get_prc(scores, labels)
+#' ranks <- rank(scores)
+#' prc <- get_prc(ranks, labels)
 #'
 #' @export
 #'
-get_prc <- function(scores, labels) {
+get_prc <- function(ranks, labels) {
     
     # Get the ranks/positions of the positive scores
     positives <- which(labels == 1, arr.ind = TRUE)
     
     n <- length(positives)
     
-    o <- order(scores, decreasing = TRUE)
+    o <- order(ranks, decreasing = TRUE)
     
     fp <- cumsum(!labels[o])
     tp <- cumsum(labels[o])

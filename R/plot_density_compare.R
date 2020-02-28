@@ -19,6 +19,7 @@
 #' aurocsB <- runif(1000)
 #' plot_density_compare(aurocsA, aurocsB)
 #'
+#' @import stats graphics
 #' @export
 #'
 plot_density_compare <- function(aucA, aucB, col = "lightgrey", xlab = "AUROC (neighbor voting)", 

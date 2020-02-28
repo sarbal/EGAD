@@ -23,12 +23,12 @@
 #' @export
 #'
 
-auroc_analytic <- function(scores, labels) {
+auroc_analytic <- function(ranks, labels) {
     
     negatives <- which(labels == 0, arr.ind = TRUE)
-    scores[negatives] <- 0
+    ranks[negatives] <- 0
     
-    p <- sum(scores, na.rm = TRUE)
+    p <- sum(ranks, na.rm = TRUE)
     nL <- length(labels)
     np <- sum(labels, na.rm = TRUE)
     nn <- nL - np

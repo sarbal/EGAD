@@ -19,6 +19,7 @@
 #' y <- rnorm(1000)
 #' conv <- conv_smoother(x,y,10)
 #' 
+#' @import stats graphics grDevices utils
 #' @export
 #' 
 conv_smoother <- function(X, Y, window, xlab = "", ylab = "", raw = FALSE) {

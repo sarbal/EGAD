@@ -11,15 +11,10 @@
 #' GEO
 #' GSE 
 #' 
-#'
+#' @import GEOquery limma arrayQualityMetrics impute MASS stats graphics grDevices
+#' 
 #' @export
 #' 
-#' @import GEOquery
-#' @import limma
-#' @import arrayQualityMetrics
-#' @import impute
-#' @import Matrix
-#' @import MASS 
 #'
 get_expression_matrix_from_GEO <- function(gseid) {
     
@@ -41,11 +36,14 @@ get_expression_matrix_from_GEO <- function(gseid) {
     # ORF <- Table(GPLList(gseSOFT)[[gplid]])$Entrez_Gene_ID
     
     # For each sample, get the expression levels for the probes
-    data.matrix <- do.call("cbind", lapply(GSMList(gseSOFT), function(x) {
-        tab <- Table(x)
-        mymatch <- match(probesets, tab$ID_REF)
-        return(tab$VALUE[mymatch])
-    }))
+    data.matrix <- do.call("cbind", 
+                           lapply(GSMList(gseSOFT), 
+                                           function(x) { 
+                                               tab <- Table(x)
+                                               mymatch <- match(probesets, tab$ID_REF)
+                                               return(tab$VALUE[mymatch])
+                                            }
+                            ))
     
     # Sometimes the data is not a numeric variable, convert
     data.matrix <- apply(data.matrix, 2, function(x) {
@@ -64,20 +62,20 @@ get_expression_matrix_from_GEO <- function(gseid) {
     
     # Check to see if data is log2 transformed
     Med <- median(data.matrix, na.rm = TRUE)
-    if (Med > 16) 
-        data.matrix <- log2(data.matrix)
+    if (Med > 16) { data.matrix <- log2(data.matrix)}
     
     
     # Normalize between arrays so that the intensities or log-ratios have similar distributions
     na.length <- length(which(is.na(data.matrix) == TRUE))
-    if (na.length > 0) 
+    if (na.length > 0) {
         data.matrix <- impute.knn(data.matrix)$data
+    }
     data.matrix <- normalizeBetweenArrays(data.matrix)
     
     # Aggregate multiple genes, using median expression value
     tmp <- aggregate(data.matrix, list(rownames(data.matrix)), median)
     data.matrix <- as.matrix(tmp[, -1])
-    genes = tmp[, 1]
+    genes <- tmp[, 1]
     rownames(data.matrix) <- genes
     
     # Clean up

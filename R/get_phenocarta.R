@@ -9,12 +9,12 @@
 #' 
 #' @keywords phenocarta download
 #'
+#' @import RCurl utils stats
 #' @export
-#' @import RCurl 
 #'   
 get_phenocarta <- function(species = "human", type = "all") {
     
-    URL = "http://www.chibi.ubc.ca/Gemma/phenocarta/LatestEvidenceExport/AllPhenocartaAnnotations.tsv"
+    URL <- "http://www.chibi.ubc.ca/Gemma/phenocarta/LatestEvidenceExport/AllPhenocartaAnnotations.tsv"
     data <- read.table(URL, fill = TRUE, sep = "\t", quote = "", header = TRUE)
     
     # Convert to data frame

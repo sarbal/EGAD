@@ -15,10 +15,10 @@
 #' GSE 
 #' 
 #'
+#' 
+#' @import RCurl utils 
 #' @export
 #' 
-#' @import RCurl
-#'
 get_expression_data_gemma <- function(gseid, filtered = "true") {
     # Get the text file from gemma (via url)
     

@@ -23,18 +23,18 @@
 #' rownames(exprs) <- gene.list
 #' colnames(exprs) <- sample.list
 #' network <- build_coexp_expressionSet(exprs, gene.list, method='pearson')
-#'
-#' @export
+#' 
 #' 
 #' @import Biobase
-#'
+#' @importFrom methods is
+#' @export
 #'  
 build_coexp_expressionSet <- function(exprsSet, gene.list, method = "spearman", flag = "rank") {
     
     # Check for expression data type
-    if (class(exprsSet) == "ExpressionSet") {
+    if ( methods::is(exprsSet, "ExpressionSet") ){
         exprs <- exprs(exprsSet)
-    } else if (class(exprsSet) == "Matrix" || class(exprsSet) == "matrix") {
+    } else if ( methods::is(exprsSet, "Matrix") | methods::is(exprsSet, "matrix") ) {
         exprs <- exprsSet
     } else {
         print("Unknown exprsSet class, please make sure it is either a matrix or an expression set object")
