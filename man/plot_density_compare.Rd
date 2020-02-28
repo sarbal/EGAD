@@ -4,8 +4,14 @@
 \alias{plot_density_compare}
 \title{Plot density comparisons}
 \usage{
-plot_density_compare(aucA, aucB, col = "lightgrey",
-  xlab = "AUROC (neighbor voting)", ylab = "Density", mode = TRUE)
+plot_density_compare(
+  aucA,
+  aucB,
+  col = "lightgrey",
+  xlab = "AUROC (neighbor voting)",
+  ylab = "Density",
+  mode = TRUE
+)
 }
 \arguments{
 \item{aucA}{numeric array of aurocs}
@@ -33,4 +39,3 @@ plot_density_compare(aurocsA, aurocsB)
 
 }
 \keyword{plot}
-

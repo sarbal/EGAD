@@ -26,4 +26,3 @@ assort_value <- assortativity(network)
 \keyword{network}
 \keyword{properties}
 \keyword{topology}
-

@@ -29,4 +29,3 @@ auc <- get_auc(x,y)
 \keyword{mean}
 \keyword{rolling}
 \keyword{under}
-

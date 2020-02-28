@@ -35,4 +35,3 @@ z <- plot_roc_overlay(scores, genes.labels)
 \keyword{ROC}
 \keyword{overlay}
 \keyword{plot}
-

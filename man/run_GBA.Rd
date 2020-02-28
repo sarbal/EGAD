@@ -48,4 +48,3 @@ gba <- run_GBA(net, genes.labels, min=10)
 \keyword{prediction}
 \keyword{validation}
 \keyword{voting}
-

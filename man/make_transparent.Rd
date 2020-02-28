@@ -4,10 +4,10 @@
 \alias{make_transparent}
 \title{Make a color transparent (Taken from an answer on StackOverflow by Nick Sabbe)}
 \usage{
-make_transparent(someColor, alpha = 100)
+make_transparent(color, alpha = 100)
 }
 \arguments{
-\item{someColor}{color number, string or hexidecimal code}
+\item{color}{color number, string or hexidecimal code}
 
 \item{alpha}{numeric transparency}
 }
@@ -17,4 +17,3 @@ someColor rgb
 \description{
 Make a color transparent (Taken from an answer on StackOverflow by Nick Sabbe)
 }
-

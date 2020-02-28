@@ -4,10 +4,10 @@
 \alias{auroc_analytic}
 \title{Area under the receiver operating characteristic curve}
 \usage{
-auroc_analytic(scores, labels)
+auroc_analytic(ranks, labels)
 }
 \arguments{
-\item{scores}{numeric array}
+\item{ranks}{numeric array}
 
 \item{labels}{binary array}
 }
@@ -32,4 +32,3 @@ auroc <- auroc_analytic(scores, labels)
 \keyword{metric}
 \keyword{operating}
 \keyword{receiver}
-

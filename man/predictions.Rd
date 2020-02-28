@@ -37,4 +37,3 @@ preds <- predictions(genes.labels, net)
 \keyword{neighbor}
 \keyword{prediction}
 \keyword{voting}
-

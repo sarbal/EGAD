@@ -32,11 +32,9 @@ rownames(exprs) <- gene.list
 colnames(exprs) <- sample.list
 network <- build_coexp_network(exprs, gene.list)
 
-
 }
 \keyword{ExpressionSet}
 \keyword{coexpression}
 \keyword{dense}
 \keyword{expressionSet}
 \keyword{network}
-

@@ -30,4 +30,3 @@ net <- make_gene_network(data, gene.list)
 \keyword{gene-by-gene}
 \keyword{interaction}
 \keyword{network}
-

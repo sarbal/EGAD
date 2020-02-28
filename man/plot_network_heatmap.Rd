@@ -26,4 +26,3 @@ plot_network_heatmap(network)
 \keyword{image}
 \keyword{network}
 \keyword{plot}
-

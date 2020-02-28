@@ -4,8 +4,12 @@
 \alias{build_coexp_expressionSet}
 \title{Builds a coexpression network from an expressionSet}
 \usage{
-build_coexp_expressionSet(exprsSet, gene.list, method = "spearman",
-  flag = "rank")
+build_coexp_expressionSet(
+  exprsSet,
+  gene.list,
+  method = "spearman",
+  flag = "rank"
+)
 }
 \arguments{
 \item{exprsSet}{data class ExpressionSet}
@@ -32,10 +36,10 @@ rownames(exprs) <- gene.list
 colnames(exprs) <- sample.list
 network <- build_coexp_expressionSet(exprs, gene.list, method='pearson')
 
+
 }
 \keyword{ExpressionSet}
 \keyword{coexpression}
 \keyword{dense}
 \keyword{expressionSet}
 \keyword{network}
-

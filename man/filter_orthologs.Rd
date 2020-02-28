@@ -32,4 +32,3 @@ genes.labels.filt <- filter_orthologs(genes.labels, gene.list, orthologs)
 \keyword{annotations}
 \keyword{filter}
 \keyword{orthologs}
-

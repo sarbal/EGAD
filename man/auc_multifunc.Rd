@@ -29,4 +29,3 @@ aurocs_mf <- auc_multifunc(annotations, optimallist)
 \keyword{AUC}
 \keyword{evalutation}
 \keyword{multifunctionality}
-

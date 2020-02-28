@@ -30,4 +30,3 @@ ext_net <- extend_network(net)
 \keyword{network}
 \keyword{path}
 \keyword{shortest}
-

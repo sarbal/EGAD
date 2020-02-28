@@ -29,4 +29,3 @@ fm <- fmeasure(prc[,1], prc[,2])
 }
 \keyword{fmeasure}
 \keyword{precision-recall}
-

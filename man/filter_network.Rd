@@ -33,4 +33,3 @@ filt_net <- filter_network(net,1,10,100)
 \keyword{filter}
 \keyword{network}
 \keyword{rows}
-

@@ -28,4 +28,3 @@ net <- build_semantic_similarity_network(genes.labels, genes)
 \keyword{network}
 \keyword{semantic}
 \keyword{similarity}
-

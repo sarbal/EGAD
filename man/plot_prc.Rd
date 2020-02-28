@@ -23,11 +23,9 @@ labels[c(1,3,5)] <- 1
 scores <- 10:1
 roc <- plot_prc(scores, labels)
 
-
 }
 \keyword{PRC}
 \keyword{metric}
 \keyword{plot}
 \keyword{precision}
 \keyword{recall}
-

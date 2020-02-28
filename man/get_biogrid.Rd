@@ -4,8 +4,7 @@
 \alias{get_biogrid}
 \title{Downloading and filtering BIOGRID}
 \usage{
-get_biogrid(species = "9606", version = "3.4.131",
-  interactions = "physical")
+get_biogrid(species = "9606", version = "3.5.181", interactions = "physical")
 }
 \arguments{
 \item{species}{numeric taxon of species}
@@ -22,4 +21,3 @@ The function downloads the specifed version of biogrid for a particular taxon
 }
 \keyword{biogrid}
 \keyword{download}
-

@@ -30,4 +30,3 @@ mf <- calculate_multifunc(genes.labels)
 \keyword{gene}
 \keyword{ontology}
 \keyword{prediction}
-
