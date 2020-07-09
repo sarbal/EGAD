@@ -1,7 +1,7 @@
 Package: EGAD
 Type: Package
 Title: Extending guilt by association by degree
-Version: 1.5.2
+Version: 1.17.0
 Date: 2016-04-20
 Authors@R: c(person("Sara Ballouz",  role = c("aut",
         "cre"), email = "sballouz@cshl.edu"), person("Melanie Weber",
@@ -15,11 +15,12 @@ Description: The package implements a series of highly efficient tools
 License: GPL-2
 Depends: R(>= 3.3)
 Imports: gplots, Biobase, GEOquery, limma, arrayQualityMetrics, impute,
-        RColorBrewer, zoo, igraph, plyr, Matrix, MASS, RCurl, affy
-Suggests: knitr, rmarkdown, testthat
+        RColorBrewer, zoo, igraph, plyr, Matrix, MASS, RCurl, affy, methods
+Suggests: knitr, testthat
 VignetteBuilder: knitr
-RoxygenNote: 5.0.1
+RoxygenNote: 7.0.2
 LazyData: true
+Encoding: UTF-8
 biocViews: Software, FunctionalGenomics, SystemsBiology,
         GenePrediction, FunctionalPrediction, NetworkEnrichment,
         GraphAndNetwork, Network

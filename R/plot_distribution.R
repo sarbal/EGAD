@@ -24,6 +24,7 @@
 #' @keywords AUROC ROC distribution
 #' plot
 #'
+#' @import stats graphics
 #' @export
 #'
 plot_distribution <- function(auc, b = 20, col = "lightgrey", xlab = "", ylab = "Density", xlim = c(0.4, 

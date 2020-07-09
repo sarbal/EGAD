@@ -39,4 +39,3 @@ genes.labels <- filter_network_rows(genes.labels,ids = paste('gene', 1:20, sep='
 \keyword{filter}
 \keyword{network}
 \keyword{rows}
-

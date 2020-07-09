@@ -24,7 +24,6 @@ labels[c(1,3,5)] <- 1
 scores <- 10:1
 roc <- plot_roc(scores, labels)
 
-
 }
 \keyword{FPR}
 \keyword{ROC}
@@ -33,4 +32,3 @@ roc <- plot_roc(scores, labels)
 \keyword{metric}
 \keyword{operating}
 \keyword{receiver}
-

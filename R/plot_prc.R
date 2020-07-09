@@ -20,7 +20,7 @@
 #' scores <- 10:1
 #' roc <- plot_prc(scores, labels)
 #'
-#'
+#' @import graphics
 #' @export
 #' 
 plot_prc <- function(scores, labels) {

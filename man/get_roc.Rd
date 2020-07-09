@@ -4,10 +4,10 @@
 \alias{get_roc}
 \title{Build receiver operating characteristic curve}
 \usage{
-get_roc(scores, labels)
+get_roc(ranks, labels)
 }
 \arguments{
-\item{scores}{numeric array}
+\item{ranks}{numeric array}
 
 \item{labels}{binary array}
 }
@@ -22,7 +22,8 @@ operating characteristic (ROC)
 labels <- c(rep(0,10))
 labels[c(1,3,5)] <- 1 
 scores <- 10:1
-roc <- get_roc(scores, labels)
+ranks <- rank(scores)
+roc <- get_roc(ranks, labels)
 
 
 
@@ -34,4 +35,3 @@ roc <- get_roc(scores, labels)
 \keyword{metric}
 \keyword{operating}
 \keyword{receiver}
-

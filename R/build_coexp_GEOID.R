@@ -18,10 +18,9 @@
 #' GEO
 #' GSE
 #'
-#'
+#' @import GEOquery
 #' @export
 #'
-#' @import GEOquery
 #'
 build_coexp_GEOID <- function(gseid, gene.list, method = "spearman", flag = "rank") {
     

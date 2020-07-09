@@ -28,4 +28,3 @@ nd <- node_degree(net)
 \keyword{network}
 \keyword{node}
 \keyword{topology}
-

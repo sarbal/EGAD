@@ -27,4 +27,3 @@ expand <- repmat( genes.labels, 1,2)
 \keyword{matrix}
 \keyword{repeat}
 \keyword{repmat}
-

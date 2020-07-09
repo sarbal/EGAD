@@ -23,10 +23,11 @@
 #' 
 #' z <- plot_roc_overlay(scores, genes.labels)
 #'
+#' @import graphics
+#' @importFrom gplots colorpanel
+#' @importFrom plyr count
 #' @export
-#' @import RColorBrewer
-#' @import plyr
-#' @import gplots
+#' 
 #' 
 plot_roc_overlay <- function(scores.mat, labels.mat, nbins = 100) {
     n <- dim(labels.mat)[1]  # number of genes
@@ -47,12 +48,12 @@ plot_roc_overlay <- function(scores.mat, labels.mat, nbins = 100) {
         2])))
     rownames(xy2) <- NULL
     xy2 <- data.frame(xy2)
-    xy3 <- count(xy2)
+    xy3 <- plyr::count(xy2)
     z[cbind(xy3[, 1], xy3[, 2]) + 1] <- xy3[, 3]
     
     Z <- log10(z)
     Z[!is.finite(Z)] <- 0
-    image(Z, col = colorpanel(nbins, "white", "black"), xlab = "FPR", ylab = "TPR", bty = "n", axes = FALSE)
+    image(Z, col = gplots::colorpanel(nbins, "white", "black"), xlab = "FPR", ylab = "TPR", bty = "n", axes = FALSE)
     axis(1)
     axis(2)
     

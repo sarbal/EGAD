@@ -16,11 +16,11 @@
 #' y <- 1:100 
 #' auc <- get_auc(x,y)
 #'  
-#' @import zoo
+#' @importFrom zoo rollmean
 #' @export
 #'
 get_auc <- function(x, y) {
     o <- order(x)
-    auc <- sum(diff(x[o]) * rollmean(y[o], 2))
+    auc <- sum(diff(x[o]) * zoo::rollmean(y[o], 2))
     return(auc)
 } 

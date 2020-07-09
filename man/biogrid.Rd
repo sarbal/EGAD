@@ -14,4 +14,3 @@
 \description{
 A data frame containing protein-protein interactions
 }
-

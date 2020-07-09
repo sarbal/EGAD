@@ -15,4 +15,3 @@
 \description{
 A dataset of the gene ontology vocabulary
 }
-

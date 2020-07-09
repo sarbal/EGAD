@@ -4,9 +4,19 @@
 \alias{plot_distribution}
 \title{Plot distribution histogram}
 \usage{
-plot_distribution(auc, b = 20, col = "lightgrey", xlab = "",
-  ylab = "Density", xlim = c(0.4, 1), ylim = c(0, 5), med = TRUE,
-  avg = TRUE, density = TRUE, bars = FALSE)
+plot_distribution(
+  auc,
+  b = 20,
+  col = "lightgrey",
+  xlab = "",
+  ylab = "Density",
+  xlim = c(0.4, 1),
+  ylim = c(0, 5),
+  med = TRUE,
+  avg = TRUE,
+  density = TRUE,
+  bars = FALSE
+)
 }
 \arguments{
 \item{auc}{numeric aucs}
@@ -46,4 +56,3 @@ d <- plot_distribution(aurocs)
 \keyword{ROC}
 \keyword{distribution}
 \keyword{plot}
-

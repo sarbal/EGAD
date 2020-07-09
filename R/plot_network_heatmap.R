@@ -14,16 +14,17 @@
 #' network <- cor(matrix( rnorm(10000), nrow=100))
 #' plot_network_heatmap(network)
 #'
+#' @importFrom gplots colorpanel
+#' @import graphics
 #' @export
-#' @import gplots
 #'
 plot_network_heatmap <- function(net, colrs) {
     
     if (missing(colrs)) {
-        colrs = colorpanel(100, "red", "blue")
+        colrs <- gplots::colorpanel(100, "red", "blue")
     }
-    nd = node_degree(net)
-    o = order(nd)
+    nd <- node_degree(net)
+    o <- order(nd)
     image(net[o, o], axes = FALSE, bty = "n", col = colrs)
     
 } 

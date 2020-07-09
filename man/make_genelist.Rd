@@ -26,4 +26,3 @@ genes <- make_genelist(data)
 \keyword{extract}
 \keyword{gene}
 \keyword{list}
-

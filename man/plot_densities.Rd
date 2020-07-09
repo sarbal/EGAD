@@ -4,8 +4,14 @@
 \alias{plot_densities}
 \title{Plot densities}
 \usage{
-plot_densities(hists, id, col = c("lightgrey"), xlab = "",
-  ylab = "Density", mode = "hist")
+plot_densities(
+  hists,
+  id,
+  col = c("lightgrey"),
+  xlab = "",
+  ylab = "Density",
+  mode = "hist"
+)
 }
 \arguments{
 \item{hists}{list of histogram objects or density objects}
@@ -36,4 +42,3 @@ temp <- plot_densities(hists,'', mode='density')
 }
 \keyword{density}
 \keyword{plot}
-

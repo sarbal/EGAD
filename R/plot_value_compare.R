@@ -14,6 +14,7 @@
 #' @keywords
 #' plot
 #'
+#' @import graphics
 #' @export
 #'
 plot_value_compare <- function(aucA, aucB, xlab = "AUROC", ylab = "AUROC", xlim = c(0, 1), ylim = c(0, 

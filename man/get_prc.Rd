@@ -4,10 +4,10 @@
 \alias{get_prc}
 \title{Build precision-recall curve}
 \usage{
-get_prc(scores, labels)
+get_prc(ranks, labels)
 }
 \arguments{
-\item{scores}{numeric array}
+\item{ranks}{numeric array}
 
 \item{labels}{binary array}
 }
@@ -21,10 +21,10 @@ The function calculates the recall and precision
 labels <- c(rep(0,10))
 labels[c(1,3,5)] <- 1 
 scores <- 10:1
-prc <- get_prc(scores, labels)
+ranks <- rank(scores)
+prc <- get_prc(ranks, labels)
 
 }
 \keyword{precision}
 \keyword{precsion-recall}
 \keyword{recall}
-

@@ -130,9 +130,16 @@ Hopefully, most questions can be answered by the documentation or the references
 To install this package, start R and enter
 
 ```{r, eval=FALSE}
+<<<<<<< HEAD
 if (!require("BiocManager"))
     install.packages("BiocManager")
 BiocManager::install("EGAD", version = "devel")
+=======
+## try http if https is not available
+if (!requireNamespace("BiocManager", quietly=TRUE))
+    install.packages("BiocManager")
+BiocManager::install("EGAD")
+>>>>>>> upstream/master
 ```
 To view this documentation in R, enter
 ```{r, eval=FALSE}

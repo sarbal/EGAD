@@ -22,4 +22,3 @@ density <- get_density( hist(x, plot=FALSE))
 }
 \keyword{histogram}
 \keyword{plot}
-

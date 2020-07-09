@@ -26,14 +26,14 @@
 #' colnames(exprs) <- sample.list
 #' network <- build_coexp_network(exprs, gene.list)
 #'
-#'
+#' @import stats utils
 #' @export
 #' 
 build_coexp_network <- function(exprs, gene.list, method = "spearman", flag = "rank") {
     
     # Calculate correlation coefficients
-    gene.corr = cor(t(exprs), method = method)
-    n = dim(gene.corr)[1]
+    gene.corr <- cor(t(exprs), method = method)
+    n <- dim(gene.corr)[1]
     
     # Create network
     if (flag == "rank") {

@@ -4,8 +4,14 @@
 \alias{plot_value_compare}
 \title{Plot value comparisons}
 \usage{
-plot_value_compare(aucA, aucB, xlab = "AUROC", ylab = "AUROC", xlim = c(0,
-  1), ylim = c(0, 1))
+plot_value_compare(
+  aucA,
+  aucB,
+  xlab = "AUROC",
+  ylab = "AUROC",
+  xlim = c(0, 1),
+  ylim = c(0, 1)
+)
 }
 \arguments{
 \item{aucA}{numeric array of aucs}
@@ -27,4 +33,3 @@ null
 The function plots a scatter
 }
 \keyword{plot}
-

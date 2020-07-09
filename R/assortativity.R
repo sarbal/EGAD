@@ -15,7 +15,8 @@
 #' @examples
 #' network <- matrix( sample(c(0,1),36, replace=TRUE), nrow=6,byrow=TRUE)
 #' assort_value <- assortativity(network)
-#'
+#' 
+#' @import stats
 #' @export
 #'
 

@@ -18,13 +18,13 @@
 #' ext_net <- extend_network(net)
 #'
 #' 
+#' @importFrom igraph graph.adjacency shortest.paths
 #' @export
-#' @import igraph
 #'   
 
 extend_network <- function(net, max = 6) {
-    g <- graph.adjacency(net, mode = "undirected")
-    s <- shortest.paths(g)
+    g <- igraph::graph.adjacency(net, mode = "undirected")
+    s <- igraph::shortest.paths(g)
     s[s > max] <- NA
     s[!is.finite(s)] <- NA
     ext_net <- 1/s

@@ -17,4 +17,3 @@
 \description{
 A list containing identifiers for the subsets of gene orthologs
 }
-

@@ -16,4 +16,3 @@
 \description{
 A dataset of gene disease associations
 }
-

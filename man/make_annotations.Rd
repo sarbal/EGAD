@@ -36,4 +36,3 @@ net <- make_annotations(data, gene.list, labels.list)
 \keyword{labels}
 \keyword{ontology}
 \keyword{to}
-

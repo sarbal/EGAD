@@ -21,6 +21,7 @@
 #' hists <- list(aurocsA, aurocsB, aurocsC)
 #' temp <- plot_densities(hists,'', mode='density')
 #'
+#' @import graphics
 #' @export
 #'
 plot_densities <- function(hists, id, col = c("lightgrey"), xlab = "", ylab = "Density", mode = "hist") {

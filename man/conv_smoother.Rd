@@ -33,4 +33,3 @@ conv <- conv_smoother(x,y,10)
 }
 \keyword{plot}
 \keyword{smooth}
-

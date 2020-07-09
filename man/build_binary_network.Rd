@@ -28,4 +28,3 @@ network <- build_binary_network(data,list)
 \keyword{gene-by-gene}
 \keyword{interaction}
 \keyword{network}
-

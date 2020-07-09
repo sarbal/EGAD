@@ -12,10 +12,10 @@
 #' @keywords biogrid download
 #'
 #' 
-#'
+#' @import utils
 #' @export
 #' 
-get_biogrid <- function(species = "9606", version = "3.4.131", interactions = "physical") {
+get_biogrid <- function(species = "9606", version = "3.5.181", interactions = "physical") {
     
     # Columns of entrez gene IDs
     col.filt <- c(2, 3)

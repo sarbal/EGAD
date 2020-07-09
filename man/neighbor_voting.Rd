@@ -4,8 +4,13 @@
 \alias{neighbor_voting}
 \title{Evaluating Gene Function Prediction}
 \usage{
-neighbor_voting(genes.labels, network, nFold = 3, output = "AUROC",
-  FLAG_DRAW = FALSE)
+neighbor_voting(
+  genes.labels,
+  network,
+  nFold = 3,
+  output = "AUROC",
+  FLAG_DRAW = FALSE
+)
 }
 \arguments{
 \item{genes.labels}{numeric array}
@@ -19,7 +24,11 @@ neighbor_voting(genes.labels, network, nFold = 3, output = "AUROC",
 \item{FLAG_DRAW}{binary flag to draw roc plot}
 }
 \value{
-scores numeric matrix
+scores numeric matrix with a row for each gene label and columns
+        auc: the average area under the ROC or PR curve for the neighbor voting predictor
+             across cross validation replicates
+        avg_node_degree: the average node degree
+        degree_null_auc: the area the ROC or PR curve for the node degree predictor
 }
 \description{
 The function performs gene function prediction based on 'guilt by association' 
@@ -36,7 +45,7 @@ colnames(net) <- paste('gene', 1:100, sep='')
 
 aurocs <- neighbor_voting(genes.labels, net, output = 'AUROC') 
 
-auprcs <- neighbor_voting(genes.labels, net, output = 'PR') 
+avgprcs <- neighbor_voting(genes.labels, net, output = 'PR') 
 
 }
 \keyword{association}
@@ -50,4 +59,3 @@ auprcs <- neighbor_voting(genes.labels, net, output = 'PR')
 \keyword{prediction}
 \keyword{validation}
 \keyword{voting}
-

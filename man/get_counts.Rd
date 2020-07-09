@@ -21,4 +21,3 @@ counts <- get_counts( hist(x, plot=FALSE))
 
 }
 \keyword{histogram}
-
