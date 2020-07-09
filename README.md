@@ -12,14 +12,8 @@ The functions implemented here can be applied to gene networks constructed from 
 The EGAD package has been accepted at [Bioconductor](http://bioconductor.org/). If you have bionconductor installed ('https://www.bioconductor.org/install/'), use the following command below. That will install the appropriate EGAD version. Make sure you have the latest verisons of R and BiocManager when trying to install. We've noted some issues with the installation through bioconductor. 
 ```
 ## try http:// if https:// URLs are not supported
-<<<<<<< HEAD
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-
-=======
 if (!requireNamespace("BiocManager", quietly=TRUE))
     install.packages("BiocManager")
->>>>>>> upstream/master
 BiocManager::install("EGAD")
 ``` 
 
