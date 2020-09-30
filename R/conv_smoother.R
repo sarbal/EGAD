@@ -5,10 +5,8 @@
 #' @param X numeric array   
 #' @param Y numeric array 
 #' @param window numeric value indicating size of window to use 
-#' @param xlab string of x-axis label 
-#' @param ylab string of y-axis label
 #' @param raw boolean
-#'
+#' @param output boolean
 #' @return smoothed X,Y and std Y matrix
 #' 
 #' @keywords smooth
