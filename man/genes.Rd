@@ -3,12 +3,14 @@
 \name{genes}
 \alias{genes}
 \title{Genes from BIOGRID v3.4.126}
-\format{Array
+\format{
+Array
 \describe{
   \item{genes}{List of Entrez identifiers}
  
 }
- @source \url{http://thebiogrid.org/}}
+ @source \url{http://thebiogrid.org/}
+}
 \description{
 An array containing identifiers for genes in biogrid
 }

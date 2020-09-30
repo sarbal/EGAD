@@ -4,13 +4,15 @@
 \name{example_neighbor_voting}
 \alias{example_neighbor_voting}
 \title{Example of binary network}
-\format{\describe{
+\format{
+\describe{
   \item{entrezID}{chromosomal start position, in base pairs}
   \item{name}{HUGO gene identifier}
   \item{species}{species}
   \item{disease}{disease}
  
-}}
+}
+}
 \description{
 This dataset includes
 }

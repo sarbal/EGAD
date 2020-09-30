@@ -4,7 +4,8 @@
 \name{attr.human}
 \alias{attr.human}
 \title{Human GENCODE annotations (v22)}
-\format{A data frame with 60483 rows and 10 variables:
+\format{
+A data frame with 60483 rows and 10 variables:
 \describe{
   \item{chr}{chromosome}
   \item{start}{chromosomal start position, in base pairs}
@@ -18,7 +19,8 @@
   \item{entrezID}{Entrez identifier}
  
 }
- @source \url{ftp://ftp.sanger.ac.uk/pub/gencode/Gencode_human/release_22/}}
+ @source \url{ftp://ftp.sanger.ac.uk/pub/gencode/Gencode_human/release_22/}
+}
 \description{
 A dataset containing identifiers for gene transcripts
 }

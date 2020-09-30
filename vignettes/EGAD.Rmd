@@ -2,18 +2,18 @@
 title: 'EGAD:  Ultra-fast functional analysis of gene networks'
 author: "Sara Ballouz+, Melanie Weber+, Paul Pavlidis and Jesse Gillis*"
 date: "`r Sys.Date()`"
-output: 
-  pdf_document: 
-    number_sections: true
-    fig_caption: true
-    toc: true
-bibliography: EGAD.bib
+output:
+  html_document:
+    df_print: paged
+    toc: yes
+  pdf_document:
+    fig_caption: yes
+    number_sections: yes
+    toc: yes
 graphics: yes
-vignette: >
-  %\VignetteIndexEntry{"EGAD user guide"}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignettePackage{EGAD}
-  %\VignetteEncoding{UTF-8}
+bibliography: EGAD.bib
+vignette: |
+  %\VignetteIndexEntry{"EGAD user guide"} %\VignetteEngine{knitr::rmarkdown} %\VignettePackage{EGAD} %\VignetteEncoding{UTF-8}
 ---
 
 
@@ -486,24 +486,18 @@ We perform the multifunctionality assessment using the GO annotations:
 GO_multifunc_assessment <- calculate_multifunc(annotations)
 ```
 
-### Create optimal lists
+### Use optimal lists to determine multifunctionality AUROC
 Once gene scores are calculated, we can use them as means for functional predictions.
 ```{r eval=FALSE}
 # For genes
-ord <- order(as.numeric(GO_multifunc_assessment[,2]),decreasing=TRUE)
-GO_multifunc_assessment_s <- GO_multifunc_assessment[ord,c(1,2)]
-optimallist_genes <- as.vector(unlist(GO_multifunc_assessment_s[,1]))
+optimallist_genes <-  GO_multifunc_assessment[,4] 
+auc_GO_mf <- auc_multifunc(annotations, GO_multifunc_assessment)
 
-# and for GO groups
-ord <- order(as.numeric(GO_groups_voted[[1]][,2]),decreasing=TRUE)
-GO_groups_voted_s <- GO_groups_voted[[1]][ord,]
-optimallist_GO <- cbind(GO.term=rownames(GO_groups_voted_s), 
-                    node.degree=GO_groups_voted_s[,2], roc=GO_groups_voted_s[,1])
-```
+# Or for GO groups
+GO_genes_multifunc_assessment <- calculate_multifunc(t(annotations) ) 
+optimallist_GO <-  GO_genes_multifunc_assessment[,4] 
+auc_gene_mf <- auc_multifunc(t(annotations), optimallist_GO)
 
-### Use optimal lists to determine multifunctionality AUROC
-```{r eval=FALSE}  
-auc_GO_mf <- auc_multifunc(annotations, optimallist_genes)
 ```
 
 ### Visualize results

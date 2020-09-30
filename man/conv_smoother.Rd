@@ -4,7 +4,7 @@
 \alias{conv_smoother}
 \title{Plot smoothed curve}
 \usage{
-conv_smoother(X, Y, window, xlab = "", ylab = "", raw = FALSE)
+conv_smoother(X, Y, window, raw = FALSE, output = FALSE, ...)
 }
 \arguments{
 \item{X}{numeric array}
@@ -13,11 +13,9 @@ conv_smoother(X, Y, window, xlab = "", ylab = "", raw = FALSE)
 
 \item{window}{numeric value indicating size of window to use}
 
-\item{xlab}{string of x-axis label}
-
-\item{ylab}{string of y-axis label}
-
 \item{raw}{boolean}
+
+\item{output}{boolean}
 }
 \value{
 smoothed X,Y and std Y matrix

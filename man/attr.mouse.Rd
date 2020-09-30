@@ -4,7 +4,8 @@
 \name{attr.mouse}
 \alias{attr.mouse}
 \title{Mouse GENCODE annotations (M7)}
-\format{A data frame with 46517 rows and 10 variables:
+\format{
+A data frame with 46517 rows and 10 variables:
 \describe{
   \item{chr}{chromosome}
   \item{start}{chromosomal start position, in base pairs}
@@ -18,7 +19,8 @@
   \item{entrezID}{Entrez identifier}
  
 }
- @source \url{ftp://ftp.sanger.ac.uk/pub/gencode/Gencode_mouse/release_M7/}}
+ @source \url{ftp://ftp.sanger.ac.uk/pub/gencode/Gencode_mouse/release_M7/}
+}
 \description{
 A dataset containing identifiers for gene transcripts
 }

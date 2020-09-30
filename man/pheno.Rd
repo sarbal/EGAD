@@ -4,7 +4,8 @@
 \name{pheno}
 \alias{pheno}
 \title{Phenocarta}
-\format{A data frame with 142272 rows and 4 variables:
+\format{
+A data frame with 142272 rows and 4 variables:
 \describe{
   \item{entrezID}{chromosomal start position, in base pairs}
   \item{name}{HUGO gene identifier}
@@ -12,7 +13,8 @@
   \item{disease}{disease}
  
 }
- @source \url{http://www.chibi.ubc.ca/Gemma/phenotypes.html}}
+ @source \url{http://www.chibi.ubc.ca/Gemma/phenotypes.html}
+}
 \description{
 A dataset of gene disease associations
 }

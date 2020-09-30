@@ -4,7 +4,7 @@ Title: Extending guilt by association by degree
 Version: 1.17.0
 Date: 2016-04-20
 Authors@R: c(person("Sara Ballouz",  role = c("aut",
-        "cre"), email = "sballouz@cshl.edu"), person("Melanie Weber",
+        "cre"), email = "sarahballouz@gmail.com"), person("Melanie Weber",
          role = c("aut","ctb"), email =
         "melweber@t-online.de"), person("Paul Pavlidis", role
         = "aut", email = "paul@chibi.ubc.ca"), person("Jesse Gillis",
@@ -15,10 +15,10 @@ Description: The package implements a series of highly efficient tools
 License: GPL-2
 Depends: R(>= 3.3)
 Imports: gplots, Biobase, GEOquery, limma, arrayQualityMetrics, impute,
-        RColorBrewer, zoo, igraph, plyr, Matrix, MASS, RCurl, affy, methods
+        RColorBrewer, zoo, igraph, plyr, MASS, RCurl, methods
 Suggests: knitr, testthat
 VignetteBuilder: knitr
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.1
 LazyData: true
 Encoding: UTF-8
 biocViews: Software, FunctionalGenomics, SystemsBiology,
@@ -27,4 +27,4 @@ biocViews: Software, FunctionalGenomics, SystemsBiology,
 Author: Sara Ballouz [aut, cre], Melanie Weber 
         [aut, ctb], Paul Pavlidis [aut], Jesse Gillis 
         [aut, ctb]
-Maintainer: Sara Ballouz <sballouz@cshl.edu>
+Maintainer: Sara Ballouz <sarahballouz@gmail.com>

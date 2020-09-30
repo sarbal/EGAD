@@ -4,14 +4,16 @@
 \name{GO.voc}
 \alias{GO.voc}
 \title{Gene ontology vocabulary}
-\format{A data frame with 42266 rows and 3 variables:
+\format{
+A data frame with 42266 rows and 3 variables:
 \describe{
   \item{GOID}{GO identifier}
   \item{term}{GO description}
   \item{domain}{GO domain}
  
 }
- @source \url{http://geneontology.org/}}
+ @source \url{http://geneontology.org/}
+}
 \description{
 A dataset of the gene ontology vocabulary
 }

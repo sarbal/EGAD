@@ -4,7 +4,9 @@
 \name{example_coexpression}
 \alias{example_coexpression}
 \title{Example of binary network}
-\format{Matrices and vectors}
+\format{
+Matrices and vectors
+}
 \description{
 This dataset includes
 }

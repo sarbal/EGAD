@@ -4,7 +4,9 @@
 \name{example_binary_network}
 \alias{example_binary_network}
 \title{Example of binary network}
-\format{Matrices and vectors}
+\format{
+Matrices and vectors
+}
 \description{
 This dataset includes
 }
