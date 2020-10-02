@@ -3,6 +3,7 @@ title: 'EGAD:  Ultra-fast functional analysis of gene networks'
 author: "Sara Ballouz+, Melanie Weber+, Paul Pavlidis and Jesse Gillis*"
 date: "`r Sys.Date()`"
 output:
+  rmarkdown::html_vignette: 
   html_document:
     df_print: paged
     toc: yes
@@ -13,7 +14,7 @@ output:
 graphics: yes
 bibliography: EGAD.bib
 vignette: |
-  %\VignetteIndexEntry{"EGAD user guide"} %\VignetteEngine{knitr::rmarkdown} %\VignettePackage{EGAD} %\VignetteEncoding{UTF-8}
+  %\VignetteIndexEntry{"EGAD user guide"} %\VignetteEngine{knitr::knitr} %\VignettePackage{EGAD} %\VignetteEncoding{UTF-8}
 ---
 
 
