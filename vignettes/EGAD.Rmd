@@ -3,14 +3,14 @@ title: 'EGAD:  Ultra-fast functional analysis of gene networks'
 author: "Sara Ballouz+, Melanie Weber+, Paul Pavlidis and Jesse Gillis*"
 date: "`r Sys.Date()`"
 output:
-  rmarkdown::html_vignette: 
-  html_document:
-    df_print: paged
-    toc: yes
   pdf_document:
     fig_caption: yes
     number_sections: yes
     toc: yes
+  html_document:
+    df_print: paged
+    toc: yes
+  rmarkdown::html_vignette: 
 graphics: yes
 bibliography: EGAD.bib
 vignette: >
