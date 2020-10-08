@@ -16,6 +16,8 @@ conv_smoother(X, Y, window, raw = FALSE, output = FALSE, ...)
 \item{raw}{boolean}
 
 \item{output}{boolean}
+
+\item{...}{other input into the plot function}
 }
 \value{
 smoothed X,Y and std Y matrix

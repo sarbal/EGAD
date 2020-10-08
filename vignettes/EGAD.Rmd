@@ -13,8 +13,11 @@ output:
     toc: yes
 graphics: yes
 bibliography: EGAD.bib
-vignette: |
-  %\VignetteIndexEntry{"EGAD user guide"} %\VignetteEngine{knitr::knitr} %\VignettePackage{EGAD} %\VignetteEncoding{UTF-8}
+vignette: >
+  %\VignetteIndexEntry{EGAD user guide} 
+  %\VignettePackage{EGAD}
+  %\usepackage[utf8]{inputenc}
+  %\VignetteEngine{knitr::knitr} 
 ---
 
 
