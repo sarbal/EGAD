@@ -13,7 +13,7 @@ Description: The package implements a series of highly efficient tools
         to calculate functional properties of networks based on guilt
         by association methods.
 License: GPL-2
-Depends: R(>= 3.3)
+Depends: R(>= 3.5)
 Imports: gplots, Biobase, GEOquery, limma, arrayQualityMetrics, impute,
         RColorBrewer, zoo, igraph, plyr, MASS, RCurl, methods
 Suggests: knitr, testthat, markdown
