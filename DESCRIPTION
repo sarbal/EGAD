@@ -16,7 +16,7 @@ License: GPL-2
 Depends: R(>= 3.3)
 Imports: gplots, Biobase, GEOquery, limma, arrayQualityMetrics, impute,
         RColorBrewer, zoo, igraph, plyr, MASS, RCurl, methods
-Suggests: knitr, testthat, markdown
+Suggests: knitr, testthat, rmarkdown
 VignetteBuilder: knitr
 RoxygenNote: 7.1.1
 LazyData: true
