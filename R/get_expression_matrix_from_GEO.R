@@ -11,7 +11,7 @@
 #' GEO
 #' GSE 
 #' 
-#' @import GEOquery limma arrayQualityMetrics impute MASS stats graphics grDevices
+#' @import GEOquery limma impute MASS stats graphics grDevices
 #' 
 #' @export
 #' 
