@@ -41,11 +41,8 @@ predictions <- function(genes.labels, network) {
     network <- network[filt.net, filt.net]
     genes.labels <- as.matrix(genes.labels[filt.lab, ])
     
-    # genes.label : needs to be in 1s and 0s
-    l <- dim(genes.labels)[2]
-    g <- dim(genes.labels)[1]
-    ab <- which(genes.labels != 0, arr.ind = TRUE)
-    n <- length(ab[, 1])
+    # Make sure the network diagonal (geneA vs geneA, geneB vs geneB, etc) is set to zero, else the predictions for a gene would be boosted by the already known data on it, messing the F1 score.
+    diag(network) <- 0
     
     # Get sums - mat. mul.
     sumin <- (t(network) %*% genes.labels)
